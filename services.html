@@ -46,29 +46,32 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="team.html">Team</a></li>
-              <!-- <li><a href="testimonials.html">Testimonials</a></li> -->
-              <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-                <!-- <ul> -->
-                  <!-- <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li> -->
-                <!-- </ul> -->
-              <!-- </li> -->
-            </ul>
-          </li>
+          <li><a href="about.html" class="active">About</a></li>
           <li><a href="services.html" class="active">Services</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
-          <!-- <li><a href="pricing.html">Pricing</a></li> -->
-          <!-- <li><a href="blog.html">Blog</a></li> -->
+
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+
+      <!-- Custom Mobile Menu Button -->
+      <button id="customMobileMenuBtn" class="custom-mobile-menu-btn d-xl-none">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <!-- Custom Mobile Menu Overlay -->
+      <div id="customMobileMenu" class="custom-mobile-menu">
+        <button id="customMobileMenuClose" class="custom-mobile-menu-close">
+          <i class="bi bi-x"></i>
+        </button>
+        <div class="custom-mobile-menu-content">
+          <a href="index.html" class="custom-menu-item">Home</a>
+          <a href="about.html" class="custom-menu-item">About</a>
+          <a href="services.html" class="custom-menu-item active">Services</a>
+          <a href="portfolio.html" class="custom-menu-item">Portfolio</a>
+          <a href="contact.html" class="custom-menu-item">Contact</a>
+        </div>
+      </div>
 <!-- 
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
@@ -371,6 +374,67 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Mobile Menu Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.getElementById('customMobileMenuBtn');
+      const mobileMenu = document.getElementById('customMobileMenu');
+      const mobileMenuClose = document.getElementById('customMobileMenuClose');
+      const menuItems = document.querySelectorAll('.custom-menu-item');
+      const submenuToggles = document.querySelectorAll('.custom-submenu-toggle');
+
+      // Open menu
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      // Close menu
+      if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+
+      // Toggle submenu
+      submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const submenu = this.nextElementSibling;
+          submenu.classList.toggle('active');
+          this.classList.toggle('active');
+        });
+      });
+
+      // Close menu when clicking on a main menu item
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Close menu when clicking on submenu item
+      document.querySelectorAll('.custom-submenu-item').forEach(item => {
+        item.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Close menu when clicking outside
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
 
   <!-- Theme Toggle Script -->
   <script>

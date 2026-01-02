@@ -384,7 +384,9 @@ h6 {
   .navmenu .dropdown ul {
     margin: 0;
     padding: 10px 0;
-    background: var(--nav-dropdown-background-color);
+    background: color-mix(in srgb, var(--surface-color), transparent 40%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: block;
     position: absolute;
     visibility: hidden;
@@ -394,7 +396,8 @@ h6 {
     transition: 0.3s;
     border-radius: 4px;
     z-index: 99;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+    border-top: 4px solid var(--accent-color);
   }
 
   .navmenu .dropdown ul li {
@@ -405,7 +408,7 @@ h6 {
     padding: 10px 20px;
     font-size: 15px;
     text-transform: none;
-    color: var(--nav-dropdown-color);
+    color: #ffffff;
   }
 
   .navmenu .dropdown ul a i {
@@ -415,7 +418,8 @@ h6 {
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
   .navmenu .dropdown ul li:hover>a {
-    color: var(--nav-dropdown-hover-color);
+    color: #f6bd52;
+    background: rgba(246, 189, 82, 0.1);
   }
 
   .navmenu .dropdown:hover>ul {
@@ -467,7 +471,7 @@ h6 {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #3498db;
+    background: rgba(52, 152, 219, 0.85);
     color: #ffffff;
     border: none;
     width: 50px;
@@ -477,11 +481,12 @@ h6 {
     cursor: pointer;
     z-index: 99999;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
   }
 
   .custom-mobile-menu-btn:hover {
-    background: #2980b9;
+    background: rgba(41, 128, 185, 0.95);
     transform: scale(1.1);
   }
 
@@ -554,12 +559,12 @@ h6 {
     padding: 15px 30px;
     margin: 10px 0;
     text-decoration: none;
-    border: 2px solid transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease;
     min-width: 250px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(10, 38, 80, 0.45);
   }
 
   .custom-menu-item:hover {
